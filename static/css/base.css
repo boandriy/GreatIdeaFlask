@@ -1,0 +1,62 @@
+.container {
+      position: relative;
+      width: 100%;
+   }
+
+   .bg {
+      position:relative;
+      z-index: 1;
+      height: 100%;
+      min-width: 1000px;
+      max-width: 1500px;
+      margin: 0 auto;
+   }
+
+@media screen  {
+         width: 100%;
+}
+
+
+.textarea {
+        align: left;
+        margin: 0;
+        margin-left: 0px;
+        border: 1px solid #grey;
+        width: 75%;
+        font-size: 12px;
+}
+
+.allcomments {
+        margin: 0;
+}
+.well {
+        background: white;
+        border: none;
+        margin:0;
+}
+.ideacomments {
+        align: right;
+        margin: 0;
+        margin-left: 0px;
+        border: 1px solid #grey;
+}
+
+.ideacomments-info {
+        margin: 0;
+        margin-left: 0px;
+
+}
+.comm {
+        float: left;
+        margin: 0;
+        margin-left: 0px;
+        align: left;
+}
+.avatar {
+        margin: 0;
+        margin-left: 0px;
+}
+.postinfo {
+        margin: 0;
+        margin-left: 0px;
+}

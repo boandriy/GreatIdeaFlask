@@ -1,0 +1,27 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div style="text-align:center;">
+    <h3><strong>Create Idea</strong></h3><br />
+</div>
+{% include '_sitemenu.html' %}
+<hr>
+<form action="/postidea" method="POST" id="newidea">
+    <div class="container" style="vertical-align:top">
+        <label  style="vertical-align:top">Idea</label>
+        <textarea class="textarea" form="newidea" placeholder="Enter this great thought" name="body" cols="50" rows="5" required></textarea>
+
+        <br />
+        <label>Status</label>
+        <select name="status" type='number' >
+            <option value="1">Public</option>
+            <option value="0">Private</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Post</button>
+    </div>
+</form>
+
+{% endblock %}

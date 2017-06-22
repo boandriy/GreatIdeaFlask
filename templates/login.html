@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>GreatIdea:Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/css/login.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="jumbotron>" align="center">
+        <h4>
+            <img src="static/images/favicon.png" style="vertical-align:bottom" width="10%">GreatIdea
+        </h4>
+    </div>
+    <div class="jumbotron" align="center">
+            <form class = "login_form" action="/loginaction" method="POST">
+                 <!- img src="img_avatar2.png" alt="Avatar" class="avatar">
+                <label class="sr-only"><b>Username</b></label>
+                <input class="username" type="text" placeholder="Enter Username" name="username" required>
+                <label class="sr-only"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+                <button type="submit">Login</button>
+                <div align="right"><p></p>Forgot <a href="#">password?</a></div>
+                </form>
+    </div>
+</div>
+</body>
+<footer>
+    <div style="text-align:center;">
+            <a href="/">Start page</a><br />
+    </div>
+
+</footer>
+</html>

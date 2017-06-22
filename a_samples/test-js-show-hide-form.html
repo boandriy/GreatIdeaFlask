@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<!-- demo post 1 -->
+
+<div id="post-1-body"><strong>Post1</strong></div>
+<div>aba posted on 2017-05-20 ...</div>
+<div>This is an idea post describing some great idea aba just got.</div>
+
+<button id="post-1" onclick="myFunction(this)">+</button>
+<div id="form-post-1"></div>
+
+<br />
+
+<!-- demo post 2 -->
+
+<div id="post-2-body"><strong>Post2</strong></div>
+<div>aba posted on 2017-05-20 ...</div>
+<div>This is an idea post describing some great idea aba just got.</div>
+<button id="post-2" onclick="myFunction(this)">+</button>
+<div id="form-post-2"></div>
+
+
+
+<!-- hidden form-->
+<div id="form_block" style="display:none">
+    <form name='form1' id="form1" action='/action' method="GET">
+        <input type='hidden' id='commented_post_id' name="postid" value='none'>
+        <input name='comment' id="comment">
+        <input type='submit' value='+'>
+    </form>
+</div>
+
+
+
+<script>
+function myFunction(element) {
+    var commentBox = document.getElementById('form-'+element.id);
+
+    //element.style.visibility='hidden';
+    if (commentBox.innerHTML == ""){
+        commentBox.innerHTML= document.getElementById("form_block").innerHTML;
+        }
+    else {
+        commentBox.innerHTML = "";
+    }
+    document.getElementById("commented_post_id").value = element.id.split('-').pop();
+    document.getElementById("comment").focus();
+}
+</script>
+
+</body>
+</html>

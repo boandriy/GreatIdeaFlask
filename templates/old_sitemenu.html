@@ -1,0 +1,9 @@
+
+    <link rel="stylesheet" type="text/css" href="static/css/sitemenu.css">
+<ul>
+    <li><a href="/feed" {% if request.path =='/feed' %} class="active" {% endif %} >All</a></li>
+    <li><a href="/user" {% if request.path =='/user' %} class="active" {% endif %} >{{username}}'s Ideas</a></li>
+    <li><a href="/newidea" {% if request.path =='/newidea' %} class="active" {% endif %} >+Idea</a></li>
+    <li style="float:right"><a class="active1" href="/logout">Logout</a></li>
+</ul>
+

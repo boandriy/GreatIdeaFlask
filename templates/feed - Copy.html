@@ -1,0 +1,55 @@
+{% if numberOfComments is not defined %}
+    {% set numberOfComments = 2 %}
+{% endif %}
+
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div style="text-align:center;">
+    <h3>Welcome to ideas feed</h3><br />
+</div>
+{% include '_sitemenu.html' %}
+<h2>All user's ideas:</h2>
+<div class="container">
+
+    {% for idea in ideas %}
+   <!-- block for each idea and its  comments -->
+  <div class="media">
+
+    <div class="media-left">
+      <img src="static/images/img_avatar2.png" class="media-object" style="width:45px">
+    </div>
+    <div class="media-body">  <!-- idea post -->
+
+      <p class="media-heading"> <small><strong>{{ idea.user.username }}</strong><i> {{ idea.getTime() }}</i></small></p>
+      <div><strong>{{idea.body}}</strong></div>
+      <div class="footer">
+          {% if idea.comments %}
+      <div><small>{{ idea.numberOfComments() }} comments. Add your comment...</small></div>
+          {% endif %}
+          <form name="comment" id="comment-{{ idea.id }}" action="/postcomment/{{ idea.id }}" method="POST">
+                <div>
+                    <textarea form="comment-{{ idea.id }}" placeholder="comment text..." name="comment" cols="50" rows="1" required></textarea>
+                    <button type="submit" style="vertical-align:top"><span class="1glyphicon-edit">+</span>
+                    </button>
+                </div>
+            </form>
+      </div>
+
+        {% if idea.comments %}
+      <!-- Comment 1 -->
+        {% with number=5 %}
+            {% include '_idea_comment.html' %}
+        {% endwith %}
+      <!-- end of comment -->
+        {% endif %}
+    </div>
+
+  </div>		<!-- each idea with comments -->
+
+    {% endfor %}
+</div> 			<!-- page container -->
+
+{{ pagination.links }}   <!-- pagination tab -->
+{% endblock %}

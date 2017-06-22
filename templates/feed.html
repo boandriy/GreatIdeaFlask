@@ -1,0 +1,103 @@
+{% if numberOfComments is not defined %}
+    {% set numberOfComments = 2 %}
+{% endif %}
+
+{% extends "_base.html" %}
+
+{% block content %}
+<div style="text-align:center;">
+    <h3><strong>Welcome to ideas feed</strong></h3><br />
+</div>
+{% include '_sitemenu.html' %}
+
+<div class="container">
+
+    {% for idea in ideas %}
+   <!-- block for each idea and its  comments -->
+  <div class="well">
+      <div>
+          <div class="media-left">
+            <img src="static/images/img_avatar2.png" class="media-object avatar" style="width:45px" align="left">
+          </div>
+        <div class="media-body">
+            <p class="media-heading">
+                <small><strong> {{ idea.user.username }}</strong><i><br>
+                <span> <i class="glyphicon glyphicon-calendar" style="color:#C0C0C0"></i></span> {{ idea.getTime() }}</i></small>
+            </p>
+        </div>
+        {{idea.body.replace("\n","<br />") |safe}}
+
+      </div>
+      <div class="ideacomments-info">
+
+          {% if idea.comments %}
+            <div class="ideacomments text-muted">
+                <span><i class="glyphicon glyphicon-comment" style="color:#C0C0C0"></i>
+                    <small>{{ idea.numberOfComments() }} <a href="javascript:void(0);" id="{{ idea.id }}" name="2" onclick="triggerComments(this)">comments</a>. Add your comment...</small>
+            </div>
+          {% endif %}
+          <form class="ideacomments" name="comment" id="comment-{{ idea.id }}" action="/postcomment/{{ idea.id }}" method="POST">
+                <div>
+                    <textarea class="textarea" form="comment-{{ idea.id }}" placeholder="comment text..." rows="2" name="comment" required></textarea>
+                    <button type="submit" style="vertical-align:top"><span class="1glyphicon-edit">+</span>
+                    </button>
+                </div>
+          </form>
+      <!-- /div -->
+        <div class="allcomments" id="allcomments-{{idea.id}}" style="margin-left: 25px;"> <!-- commentblock start -->
+        {% if idea.comments %}
+            <!-- Comment start -->
+            {% include '_idea_comment.html' %}
+            <!-- end of comment -->
+        {% endif %}
+        </div> <!-- end of commentblock -->
+      </div>
+  </div>		<!-- each idea with comments -->
+
+    {% endfor %}
+</div> 			<!-- page container -->
+
+<!--  {{ pagination.info }} -->
+<link rel="stylesheet" type="text/css" href="static/css/sitemenu.css">
+{{ pagination.links }}   <!-- pagination tab -->
+
+<script>
+function triggerComments(element){
+ var id = 'allcomments-'+element.id;
+ var commentBox = document.getElementById(id);
+
+ var numberOfComments = element.getAttribute("name");
+
+ if (numberOfComments == 2){
+    numOfComm = 100 ;
+    }
+ else {
+    numOfComm = 2 ;
+ }
+ element.setAttribute("name", numOfComm);
+
+    $.ajax({
+                url: '/gettcomments/'+element.id+'/'+numOfComm,
+                data: 1,
+                type: 'POST',
+                success: function(response){
+                        // console.log(response);
+                var parsed_data = JSON.parse(response);
+
+                if (parsed_data["status"] == "error") {
+                     commentBox.innerHTML = parsed_data["message"];
+                   }
+                else {
+                    commentBox.innerHTML = parsed_data["message"];
+                }
+                },
+                error: function(error){
+                        commentBox.innerHTML = "ajax Error: can't get comments:";
+                        console.log(error);
+                }
+        });
+
+}
+
+</script>
+{% endblock %}

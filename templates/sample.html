@@ -1,0 +1,28 @@
+<html>
+<head>
+    <link rel="stylesheet" href='/css/style.css'/>
+</head>
+<body>
+
+<h1>Hello from a template!</h1>
+Params received: {{param}}
+
+<ul id="param"></ul>
+
+    {% for item in param %}
+        <li> {{ item[0] }} : {{ item[1] }} </li>
+    {% endfor %}
+
+</ul>
+
+<p> class {{agent}}</p>
+Name: {{agent.getName()}} <br>
+ID: {{agent.getID()}} <br>
+Age: {{agent.getAge()}} <br>
+
+<p></p>
+
+<A href="/">Main page</a>
+
+</body>
+</html>

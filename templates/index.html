@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div style="text-align:center;">
+    <h1><strong>Welcome to Great Idea </strong></h1><br />
+</div>
+<div style="text-align:right;">
+        <link rel="stylesheet" type="text/css" href="static/css/sitemenu.css">
+<ul>
+    <li style="float:right"><a href="/login"  class="active"  >Login</a></li>
+    <li style="float:right"><a href="/register" {% if request.path =='/signup' %} class="active" {% endif %} >Register</a></li>
+</ul>
+</div>
+
+<img src="static/images/GreatIdea.jpg" alt="GI" style="width:100%;">
+
+<p>Sample site<p>
+<ul>
+    <li> <a href='/sample'> NON-existibg page</a>
+    <li> <a href='/user'> user page</a>
+    <li> <a href='http://www.google.com/?q=flask&gws_rd=cr,ssl' target="new window"> flask in google</a></li>
+</ul>
+
+{% endblock %}

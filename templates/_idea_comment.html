@@ -1,0 +1,22 @@
+{% if numberOfComments is not defined %}
+    {% set numberOfComments = 2 %}
+{% endif %}
+
+{% for comment in idea.getLastComments(numberOfComments) %}
+<div class="ideacomment">
+        <div class="media-left">
+            {% set currentuser = username %}
+            {% set commentuser = comment.user.username %}
+            {% if currentuser == commentuser %}
+            {% set image = "static/images/img_avatar2.png" %}
+            {% else %}
+            {% set image = "static/images/img_avatar1.png" %}
+            {% endif %}
+            <img src={{image}} class="media-object abvatar media-left" style="width:45px">
+        </div>
+        <div class="media-body">
+          <p class="media-heading text-muted"><small><strong>{{ comment.user.username }}</strong> <br /> <i> {{ comment.getTime()}}</i></small></p>
+          <p>{{ comment.linkify()|safe }}</p>
+       </div>
+</div>
+{% endfor %}
