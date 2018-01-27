@@ -18,7 +18,7 @@ from userMail import UserMail
 app = Flask(__name__)
 app.secret_key = 'GI'
 
-engine = create_engine('mysql://aba:007@127.0.0.1/idea?charset=utf8',encoding='utf-8')
+engine = create_engine('mysql://username:pass@127.0.0.1/idea?charset=utf8',encoding='utf-8')         #username and password of database
 Session = sessionmaker(bind=engine)
 dbSession = Session()
 
