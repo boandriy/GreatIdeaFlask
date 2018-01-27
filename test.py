@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 print "Approach #1"
 print("\ncreating DB engine")
-engine = create_engine('mysql://aba:007@127.0.0.1/idea')
+engine = create_engine('mysql://username:pass@127.0.0s.1/idea')         #username and pass to your database
 print engine
 
 print("\ncreating DB session")
