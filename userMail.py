@@ -6,17 +6,17 @@ import requests
 from dbObjects import User
 
 
-FROM = "pi.raspberry.ab@gmail.com"
-MAILPASS = "pi2383350"
+FROM = "some mail"              #replace with actual account info
+MAILPASS = "some pass"
 MAILSERVER = "smtp.gmail.com:587"
 
 
 
 class UserMail():
     def __init__(self,user):
-        self.From = "pi.raspberry.ab@gmail.com"
-        self.mailpass = "pi2383350"
-        self.mailserver = "smtp.gmail.com:587"
+        self.From = FROM
+        self.mailpass = MAILPASS
+        self.mailserver = MAILSERVER
         self.user = user
 
 
